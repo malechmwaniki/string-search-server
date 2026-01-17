@@ -1,0 +1,20 @@
+[Unit]
+Description=String Search Server - Algorithmic Sciences Task
+After=network.target
+
+[Service]
+Type=simple
+User=malakai
+Group=malakai
+WorkingDirectory=/home/malakai/string-search-server
+Environment="PATH=/home/malakai/string-search-server/venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/usr/bin/python3 /home/malakai/string-search-server/src/server.py /home/malakai/string-search-server/config.ini
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=string-search-server
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
